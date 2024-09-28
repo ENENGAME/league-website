@@ -10,32 +10,45 @@
       background-color: #222;
       color: #fff;
       margin: 0;
-      padding: 20px;
+      padding: 0;
       text-align: center;
     }
 
-    /* 表格的主容器 */
+    /* 表格的主容器，保持置中，灰底要貼合表格 */
     .container {
-      margin: 40px auto;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background-color: #787878;
-      border-radius: 10px;
-      padding: 20px;
-      box-sizing: border-box;
-      width: 100%;
-      max-width: 1200px;
-      height: auto;
-      overflow: hidden;
+      margin: 30px 0; /* 調整上下間距 */
+      position: relative;
     }
 
-    /* 設置表格容器 */
+    /* 表格標題樣式 */
+    .table-title {
+      font-weight: bold;
+      font-size: 22px;
+      font-style: italic;
+      text-align: center;
+      opacity: 0;
+      animation: slideIn 1s ease-out forwards;
+    }
+
+    /* 滑動動畫效果 */
+    @keyframes slideIn {
+      0% {
+        transform: translateY(-20px);
+        opacity: 0;
+      }
+      100% {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    /* 表格容器，置中顯示 */
     .table-container {
       width: 100%;
       max-width: 100%;
       display: flex;
       justify-content: center;
+      margin: 0;
     }
 
     table {
@@ -62,25 +75,25 @@
 
     /* 奇數行背景顏色（較深灰色） */
     tbody tr:nth-child(odd) {
-      background-color: #3a3a3a; /* 深灰色 */
+      background-color: #3a3a3a;
     }
 
     /* 偶數行背景顏色（較淺灰色） */
     tbody tr:nth-child(even) {
-      background-color: #4a4a4a; /* 淺灰色 */
+      background-color: #4a4a4a;
     }
 
     /* 針對寬螢幕設置 */
     @media (min-width: 1500px) {
       .table-container {
-        transform: scale(1); /* 正常大小 */
+        transform: scale(0.9); 
       }
     }
 
     /* 螢幕寬度小於 1500px 時縮小 */
     @media (max-width: 1500px) {
       .table-container {
-        transform: scale(1);
+        transform: scale(0.9);
         transform-origin: center;
       }
     }
@@ -101,16 +114,20 @@
       }
     }
 
-    /* 螢幕寬度小於 768px 時縮小 */
+    /* 螢幕寬度小於 768px 時縮小，並確保灰底容器貼合表格 */
     @media (max-width: 768px) {
       .table-container {
-        transform: scale(0.6);
+        transform: scale(0.65);
         transform-origin: center;
       }
     }
 
-    /* 螢幕寬度小於 600px 時縮小 */
-    @media (max-width: 600px) {
+    /* 螢幕寬度小於 600px 時進一步縮小 */
+    @media (max-width: 650px) {
+      .container {
+        padding: 3px;
+        margin: 20px 0;
+      }
       .table-container {
         transform: scale(0.5);
         transform-origin: center;
@@ -119,16 +136,12 @@
 
     /* 螢幕寬度小於 480px 時縮小 */
     @media (max-width: 480px) {
+      .container {
+        padding: 0;
+        margin: 20px 0;
+      }
       .table-container {
         transform: scale(0.4);
-        transform-origin: center;
-      }
-    }
-
-    /* 螢幕寬度小於 300px 時縮小 */
-    @media (max-width: 300px) {
-      .table-container {
-        transform: scale(0.35);
         transform-origin: center;
       }
     }
@@ -140,6 +153,7 @@
 
   <!-- 表格 1: DAY 1 -->
   <div class="container">
+    <div class="table-title">W1D1 比賽結果</div>
     <div class="table-container">
       <table>
         <thead>
@@ -186,6 +200,7 @@
 
   <!-- 表格 2: DAY 2 -->
   <div class="container">
+    <div class="table-title">W1D2比賽結果</div>
     <div class="table-container">
       <table>
         <thead>
