@@ -18,13 +18,13 @@
     .container {
       margin: 40px auto;
       display: flex;
-      justify-content: center;
-      align-items: center;
+      justify-content: flex-start; /* 靠左對齊 */
+      align-items: flex-start;
       background-color: #333;
       border-radius: 10px;
       padding: 20px;
       box-sizing: border-box;
-      width: 100%; /* 確保容器的寬度為90% */
+      width: 100%; /* 確保容器的寬度為100% */
       max-width: 1200px; /* 限制容器的最大寬度 */
       height: auto;
       overflow: hidden; /* 防止表格超出容器 */
@@ -35,7 +35,7 @@
       width: 100%;
       max-width: 100%;
       display: flex;
-      justify-content: center;
+      justify-content: flex-start; /* 靠左對齊 */
     }
 
     table {
@@ -198,8 +198,8 @@
             <th>擊殺</th>
             <th>得分</th>
             <th>總擊殺</th>
-            <th>KDA</th>
             <th>總分</th>
+            <th>KDA</th>
           </tr>
         </thead>
         <tbody id="table-body-day2">
