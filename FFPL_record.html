@@ -20,14 +20,14 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      background-color: #333;
+      background-color: #787878;
       border-radius: 10px;
       padding: 20px;
       box-sizing: border-box;
-      width: 100%; /* 確保容器的寬度為90% */
-      max-width: 1200px; /* 限制容器的最大寬度 */
+      width: 100%;
+      max-width: 1200px;
       height: auto;
-      overflow: hidden; /* 防止表格超出容器 */
+      overflow: hidden;
     }
 
     /* 設置表格容器 */
@@ -39,14 +39,15 @@
     }
 
     table {
-      width: 100%; /* 確保表格寬度不超過容器 */
+      width: 100%;
       border-collapse: collapse;
       font-size: 14px;
       margin: 0 auto;
     }
 
+    /* 新增格線 */
     table, th, td {
-      border: 0px solid #444;
+      border: 1px solid #fff;
     }
 
     th, td {
@@ -69,14 +70,22 @@
       background-color: #4a4a4a; /* 淺灰色 */
     }
 
-    /* 等比例縮小表格，並保持其不超過容器範圍 */
+    /* 針對寬螢幕設置 */
+    @media (min-width: 1500px) {
+      .table-container {
+        transform: scale(1); /* 正常大小 */
+      }
+    }
+
+    /* 螢幕寬度小於 1500px 時縮小 */
     @media (max-width: 1500px) {
       .table-container {
-        transform: scale(0.9);
+        transform: scale(1);
         transform-origin: center;
       }
     }
 
+    /* 螢幕寬度小於 1200px 時縮小 */
     @media (max-width: 1200px) {
       .table-container {
         transform: scale(0.9);
@@ -84,6 +93,7 @@
       }
     }
 
+    /* 螢幕寬度小於 1000px 時縮小 */
     @media (max-width: 1000px) {
       .table-container {
         transform: scale(0.8);
@@ -91,13 +101,15 @@
       }
     }
 
+    /* 螢幕寬度小於 768px 時縮小 */
     @media (max-width: 768px) {
       .table-container {
-        transform: scale(0.65);
+        transform: scale(0.6);
         transform-origin: center;
       }
     }
 
+    /* 螢幕寬度小於 600px 時縮小 */
     @media (max-width: 600px) {
       .table-container {
         transform: scale(0.5);
@@ -105,9 +117,18 @@
       }
     }
 
+    /* 螢幕寬度小於 480px 時縮小 */
     @media (max-width: 480px) {
       .table-container {
         transform: scale(0.4);
+        transform-origin: center;
+      }
+    }
+
+    /* 螢幕寬度小於 300px 時縮小 */
+    @media (max-width: 300px) {
+      .table-container {
+        transform: scale(0.35);
         transform-origin: center;
       }
     }
