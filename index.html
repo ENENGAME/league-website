@@ -8,6 +8,7 @@
     <meta property="og:url" content="https://league.enenlive.com">
     <meta property="og:type" content="website">
     <link rel="icon" href="https://enengame.github.io/BNT/FF.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap">
     <title>選擇主播</title>
     <style>
         /* 基本樣式重置 */
@@ -19,16 +20,38 @@
 
         /* 整體佈局 */
         body {
-            font-family: '華康新綜藝體','Arial', sans-serif;
-            background-image: url('ch_files/bg.png'); /* 替換為你的背景圖片路徑 */
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            color: #000000;
-            margin: 0;
+            font-family: 'Orbitron', 'Arial', sans-serif;
+            background-color: #0a0a0a;
+            color: #fff;
             display: flex;
             flex-direction: column;
-            min-height: 100vh; /* 確保頁面佔滿整個視窗 */
+            min-height: 100vh;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* 背景效果 */
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(115deg, #00284f, #ffffff);
+            z-index: -2;
+        }
+
+        body::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at center, rgba(0, 191, 255, 0.3), transparent 70%);
+            filter: blur(200px);
+            z-index: -1;
         }
 
         /* 標題圖片固定置頂 */
@@ -40,16 +63,15 @@
             top: 0;
             left: 0;
             z-index: 1000;
-            background-color: rgba(0, 149, 255, 0.7); /* 適當的背景色 */
-            max-height: 150px; /* 設定最大高度 */
+            background-color: rgba(0, 0, 0, 0.7);
+            border-bottom: 2px solid #00bfff;
         }
 
         header img {
             width: 80%;
-            max-width: 800px; /* 確保與下面的聯賽圖片等寬 */
-            max-height: 110px; /* 限制圖片最大高度 */
-            object-fit: contain; /* 確保圖片按比例縮放且適應容器 */
-            border-radius: 20px; /* 可選：讓圖片有圓角效果 */
+            max-width: 800px;
+            max-height: 110px;
+            object-fit: contain;
         }
 
         /* 主內容容器 */
@@ -57,47 +79,68 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
+            justify-content: flex-start;
             flex: 1;
-            padding: 160px 0; /* 讓出空間給固定的 header */
+            padding-top: 180px;
+            padding-bottom: 50px;
+        }
+
+        /* 主標題 */
+        .main-title {
+            font-size: 3.5em;
+            color: #00bfff;
+            text-shadow: 0 0 15px #00bfff, 0 0 30px #001f5c;
+            margin-bottom: 50px;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 10px #00bfff, 0 0 20px #00bfff;
+            }
+            to {
+                text-shadow: 0 0 30px #00bfff, 0 0 50px #001f5c;
+            }
         }
 
         /* 聯賽選擇卡片 */
         .league-option {
             width: 80%;
             max-width: 800px;
-            margin: 20px 0;
-            position: relative;
-            overflow: hidden;
+            background: rgba(0, 0, 0, 0.85);
             border-radius: 20px;
-            transition: transform 0.3s ease;
+            margin-bottom: 40px;
+            position: relative;
+            box-shadow: 0 0 20px rgba(0, 191, 255, 0.7), 0 0 40px rgba(0, 191, 255, 0.5);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         .league-option:hover {
             transform: scale(1.05);
+            box-shadow: 0 0 40px rgba(0, 191, 255, 0.9), 0 0 60px rgba(0, 191, 255, 0.7);
         }
 
         .league-option img {
             width: 100%;
             height: auto;
-            border-radius: 20px;
+            border-radius: 20px 20px 0 0;
         }
 
         /* 遮罩與文字效果 */
         .league-option a {
             position: absolute;
-            top: 0;
+            bottom: 0;
             left: 0;
             width: 100%;
-            height: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-decoration: none;
-            color: #fff;
-            background: rgba(0, 0, 0, 0.5);
-            font-size: 30px;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            text-align: center;
+            color: #00bfff;
+            font-size: 1.8em;
             font-weight: bold;
+            text-decoration: none;
+            text-shadow: 0 0 15px #00bfff;
             opacity: 0;
             transition: opacity 0.3s ease;
         }
@@ -106,35 +149,48 @@
             opacity: 1;
         }
 
+        /* 藍紫霓虹分隔線 */
+        .separator {
+            width: 80%;
+            max-width: 800px;
+            height: 4px;
+            background: linear-gradient(90deg, rgba(0, 191, 255, 1) 0%, rgba(138, 43, 226, 1) 100%);
+            margin: 40px 0;
+        }
+
         /* Footer 固定置底 */
         footer {
             padding: 20px;
-            background-color: rgba(0, 149, 255, 0.7);
-            color: #ccc;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: #00bfff;
             font-size: 14px;
             text-align: center;
-            position: relative;
+            border-top: 2px solid #00bfff;
             width: 100%;
-            bottom: 0;
         }
 
     </style>
 </head>
 <body>
 
-    <!-- 頁面標題（圖片替換文字） -->
+    <!-- 頁面標題 -->
     <header>
         <img src="ch_files/FF橫幅.png" alt="JUNLIN LEAGUE"> <!-- 替換為你的標題圖片 -->
     </header>
+
     <!-- 主內容區 -->
     <div class="container">
-        
+        <!-- 頁面標題 -->
+        <h1 class="main-title">選擇主播</h1>
+
         <!-- 第一個聯賽 -->
-         <h1>選擇主播</h1>
         <div class="league-option">
             <img src="ch_files/EN橫幅.png" alt="FFSGC">
             <a href="https://league.enenlive.com/ENCH.html">Y T： E N E N G A M E</a>
         </div>
+
+        <!-- 霓虹分隔線 -->
+        <div class="separator"></div>
 
         <!-- 第二個聯賽 -->
         <div class="league-option">
