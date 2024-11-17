@@ -1,208 +1,79 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta property="og:title" content="聯賽主播選擇主頁">
-    <meta property="og:description" content="FFLEAGUE，簡稱:FF。">
-    <meta property="og:url" content="https://league.enenlive.com">
-    <meta property="og:type" content="website">
-    <link rel="icon" href="https://enengame.github.io/BNT/FF.ico" type="image/x-icon">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap">
-    <title>選擇主播</title>
-    <style>
-        /* 基本樣式重置 */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        /* 整體佈局 */
-        body {
-            font-family: 'Orbitron', 'Arial', sans-serif;
-            background-color: #0a0a0a;
-            color: #fff;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-            overflow: hidden;
-            position: relative;
-        }
-
-        /* 背景效果 */
-        body::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(115deg, #00284f, #ffffff);
-            z-index: -2;
-        }
-
-        body::after {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle at center, rgba(0, 191, 255, 0.3), transparent 70%);
-            filter: blur(200px);
-            z-index: -1;
-        }
-
-        /* 標題圖片固定置頂 */
-        header {
-            padding: 20px;
-            text-align: center;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            left: 0;
-            z-index: 1000;
-            background-color: rgba(0, 0, 0, 0.7);
-            border-bottom: 2px solid #00bfff;
-        }
-
-        header img {
-            width: 80%;
-            max-width: 800px;
-            max-height: 110px;
-            object-fit: contain;
-        }
-
-        /* 主內容容器 */
-        .container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: flex-start;
-            flex: 1;
-            padding-top: 180px;
-            padding-bottom: 50px;
-        }
-
-        /* 主標題 */
-        .main-title {
-            font-size: 3.5em;
-            color: #00bfff;
-            text-shadow: 0 0 15px #00bfff, 0 0 30px #001f5c;
-            margin-bottom: 50px;
-            animation: glow 2s ease-in-out infinite alternate;
-        }
-
-        @keyframes glow {
-            from {
-                text-shadow: 0 0 10px #00bfff, 0 0 20px #00bfff;
-            }
-            to {
-                text-shadow: 0 0 30px #00bfff, 0 0 50px #001f5c;
-            }
-        }
-
-        /* 聯賽選擇卡片 */
-        .league-option {
-            width: 80%;
-            max-width: 800px;
-            background: rgba(0, 0, 0, 0.85);
-            border-radius: 20px;
-            margin-bottom: 40px;
-            position: relative;
-            box-shadow: 0 0 20px rgba(0, 191, 255, 0.7), 0 0 40px rgba(0, 191, 255, 0.5);
-            overflow: hidden;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .league-option:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 40px rgba(0, 191, 255, 0.9), 0 0 60px rgba(0, 191, 255, 0.7);
-        }
-
-        .league-option img {
-            width: 100%;
-            height: auto;
-            border-radius: 20px 20px 0 0;
-        }
-
-        /* 遮罩與文字效果 */
-        .league-option a {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            padding: 20px;
-            background: rgba(0, 0, 0, 0.8);
-            text-align: center;
-            color: #00bfff;
-            font-size: 1.8em;
-            font-weight: bold;
-            text-decoration: none;
-            text-shadow: 0 0 15px #00bfff;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .league-option:hover a {
-            opacity: 1;
-        }
-
-        /* 藍紫霓虹分隔線 */
-        .separator {
-            width: 80%;
-            max-width: 800px;
-            height: 4px;
-            background: linear-gradient(90deg, rgba(0, 191, 255, 1) 0%, rgba(138, 43, 226, 1) 100%);
-            margin: 40px 0;
-        }
-
-        /* Footer 固定置底 */
-        footer {
-            padding: 20px;
-            background-color: rgba(0, 0, 0, 0.8);
-            color: #00bfff;
-            font-size: 14px;
-            text-align: center;
-            border-top: 2px solid #00bfff;
-            width: 100%;
-        }
-
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta property="og:title" content="恩恩官網-轉播經歷">
+  <meta property="og:description" content="查看 ENEN GAMES 的轉播經歷及精彩片段。">
+  <meta property="og:image" content="https://www.enenlive.com/網站縮圖.png">
+  <meta property="og:url" content="https://www.enenlive.com/broadcast">
+  <meta property="og:type" content="website">
+  <link rel="icon" href="https://www.enenlive.com/ENEN.ico" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=ZCOOL+QingKe+HuangYou&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://enengame.github.io/FFTPL/PNG/font.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/earlyaccess/cwtexyen.css">
+  <link rel="stylesheet" href="ch_files/ch_style.css">
+  <title>恩恩官網-合作經歷</title>
 </head>
 <body>
-
-    <!-- 頁面標題 -->
-    <header>
-        <img src="ch_files/FF橫幅.png" alt="JUNLIN LEAGUE"> <!-- 替換為你的標題圖片 -->
-    </header>
-
-    <!-- 主內容區 -->
-    <div class="container">
-        <!-- 頁面標題 -->
-        <h1 class="main-title">選擇主播</h1>
-
-        <!-- 第一個聯賽 -->
-        <div class="league-option">
-            <img src="ch_files/EN橫幅.png" alt="FFSGC">
-            <a href="https://league.enenlive.com/ENCH.html">Y T： E N E N G A M E</a>
-        </div>
-
-        <!-- 霓虹分隔線 -->
-        <div class="separator"></div>
-
-        <!-- 第二個聯賽 -->
-        <div class="league-option">
-            <img src="ch_files/JL橫幅.png" alt="JL">
-            <a href="https://league.enenlive.com/JLCH.html">YT： J I A N G L I N</a>
-        </div>
+  <header>
+    <div class="logo">
+      <a href="https://league.enenlive.com">
+        <img src="ch_files/FF橫幅.png" alt="ENEN GAMES Logo">
+      </a>
     </div>
+  </header>
+<br><br>
+    <div class="intro-section">
+      <h1>選擇主播</h1>
+    </div> 
+    <main>
+    <section class="broadcast-list">
+      <div class="broadcast-item">
+        
+        <h1>恩恩遊戲日常</h1>
+        
+        <img src="ch_files/EN橫幅.png" alt="比賽 1">
+        <div class="button-group">
+          <button class="watch-button" onclick="window.open('https://league.enenlive.com/ENCH', '_blank')">進入ENEN賽事網站</button>
+          
+        </div>
+      </div>
+    </section>
 
-    <!-- 頁面底部 -->
-    <footer>
-        &copy; 2024 ENENLIVE. All Rights Reserved.
-    </footer>
+    <section class="broadcast-list">
+      <div class="broadcast-item">
+        <h1>江林叔叔</h1>
+        <img src="ch_files/JL橫幅.png" alt="比賽 2">
+        
+        <div class="button-group">
+          <button class="watch-button" onclick="window.open('https://league.enenlive.com/JLCH', '_blank')">進入江林賽事網站</button>
+        </div>
+      </div>
+    </section>  
+  </main>
+
+  <footer>
+    &copy; 2024～2026<br>ENEN ALL RIGHTS RESERVED。
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script>
+  AOS.init({
+    duration: 500, 
+    offset: 100,   
+  });
+
+  document.getElementById('navBtn').addEventListener('click', function () {
+    const mobileNav = document.getElementById('mobileNav');
+    mobileNav.classList.toggle('active');
+  });
+
+  
+</script>
 
 </body>
 </html>
