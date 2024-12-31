@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://enengame.github.io/BNT/png/font.css">
+    <title>合併版 HTML</title>
+    <style>
+        body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    font-family: "GFF Latin", "Noto Sans TC";
+    position: relative;
+    background-color: transparent; /* 背景透明 */
+}
+
+/* 背景 PNG */
+.background-png {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('png/對比圖.png') no-repeat center center fixed;
+    background-size: cover;
+    z-index: 0;
+}
+
+/* 各部分容器 */
+.section {
+    position: absolute;
+    z-index: 10;
+}
+
+/* 第一組 HTML 的樣式 */
+#first-team {
+    top: 223px;
+    left: 0;
+    width: 960px;
+    height: 525px;
+}
+
+/* 積分表左邊 */
+#score-left {
+    top: 900px;
+    left: 40px;
+    width: 956px;
+    height: 202px;
+}
+
+/* 積分表右邊 */
+#score-right {
+    top: 275px;
+    left: 975px;
+    width: 960px;
+    height: 1000px;
+}
+
+/* 可調整樣式 */
+.draggable {
+    resize: both;
+    overflow: auto;
+}
+
+.text-container {
+    position: absolute;
+    z-index: 3;
+    font-family: "GFF Latin", MS UI Gothic; /* 統一字體 */
+    font-weight: bold; /* 統一粗細 */
+    text-align: center; /* 水平置中 */
+    white-space: nowrap; /* 防止文字換行 */
+    transform: translateX(-50%); /* 中線對齊 */
+}
+
+/* 文字區域樣式 */
+#text1 {
+    top: 462px;
+    left: 720px; /* 原本定位 */
+    font-size: 95px; /* 個別文字大小 */
+    color: rgb(255, 255, 255); /* 個別文字顏色 */
+    transform: translateX(-50%); /* 確保中線對齊 */
+}
+
+#text2 {
+    top: 660px;
+    left: 80px; /* 原本定位 */
+    font-size: 55px;
+    color: rgb(255, 255, 255);
+}
+
+#text3 {
+    top: 660px;
+    left: 295px; /* 原本定位 */
+    font-size: 55px;
+    color: rgb(255, 255, 255);
+}
+
+#text4 {
+    top: 660px;
+    left: 570px; /* 原本定位 */
+    font-size: 55px;
+    color: rgb(255, 255, 255);
+}
+
+#text5 {
+    top: 660px;
+    left: 820px; /* 原本定位 */
+    font-size: 55px;
+    color: rgb(255, 255, 255);
+}
+
+    </style>
+</head>
+<body>
+    <div class="background-png"></div>
+
+    <div class="text-container" id="text1">文字1</div>
+    <div class="text-container" id="text2">文字2</div>
+    <div class="text-container" id="text3">文字3</div>
+    <div class="text-container" id="text4">文字4</div>
+    <div class="text-container" id="text5">文字5</div>
+    
+
+    <!-- 第一部分內容 -->
+    <div id="first-team" class="section draggable">
+        <!-- 複製 "FirstTeam.html" 的內容到此 -->
+        <div>
+            
+            <!DOCTYPE html>
+            <html lang="zh-Hant">
+            <head>
+                <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <title>顯示Google Sheets圖片</title>
+                <style>
+                    body {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        height: 100vh;
+                        margin: 0;
+                        background-color: 0;
+                    }
+                    .image-container img {
+                        max-width: 100%;
+                        height: auto;
+                    }
+                </style>
+            </head>
+            <body>
+                <div class="image-container" id="image-container">
+                    <!-- 圖片將由JavaScript動態插入 -->
+                </div>
+                <script>
+                    async function loadImageFromSheet() {
+                        const sheetId = '1COOG-OTMPIqRJNHjFsc4EBsOfA0Oc6bKQC6YLTErc-4';  // 替換為你的Google Sheets ID
+                        const range = 'HTML!F1';  // 替換為你的儲存格範圍
+                        const apiKey = 'AIzaSyB0pjUimtoomamQ9BVPGwIB-36VNFlVlds';  // 替換為你的API密鑰
+                        const url = `https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/${range}?key=${apiKey}`;
+            
+                        try {
+                            const response = await fetch(url);
+                            const data = await response.json();
+                            if (data.values) {
+                                const imageUrl = data.values[0][0];  // 獲取儲存格中的圖片URL
+                                const imageContainer = document.getElementById('image-container');
+                                const imgElement = document.createElement('img');
+                                imgElement.src = imageUrl;
+                                imgElement.alt = 'Image from Google Sheets';
+                                imageContainer.appendChild(imgElement);
+                            } else {
+                                console.error('未能獲取圖片URL，請檢查儲存格內容');
+                            }
+                        } catch (error) {
+                            console.error('無法從Google Sheets API獲取數據', error);
+                        }
+                    }
+            
+                    window.onload = loadImageFromSheet;
+                </script>
+            </body>
+            </html>
+
+        </div>
+    </div>
+
+    <!-- 第二部分內容 -->
+    <div id="score-left" class="section draggable">
+        <!-- 複製 "FFSGCLEFT.html" 的內容到此 -->
+        <div>
+            <!DOCTYPE html>
+            <!-- saved from url=(0039)https://jl-4lw.pages.dev/Regular_season -->
+            <html lang="zh-Hant"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+                <link rel="stylesheet" href="https://enengame.github.io/BNT/png/font.css">
+                
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <style>
+                    body {
+                        margin: 0;
+                        padding: 0;
+                        font-family: "GFF Latin", "Noto Sans TC";
+                        background-size: cover;
+                        height: 100%;
+                        width: 100%;
+                        display: flex;
+                    }
+                    .column {
+                        margin-right: 50px;
+                        flex: 1;
+                        display: flex;
+                        flex-direction: column;
+                    }
+                    .row {
+                        display: flex;
+                        margin-bottom: 20px;
+                    }
+                    .cell {
+                        font-size: 35px;
+                        color: #ffffff;
+                        background-color: #C09AD9;
+                        border: 1px solid #959595;
+                        padding: 10px 8px 10px 8px;
+                        text-align: center;
+                    }
+                    .cell-1 { 
+                        font-size: 35px;
+                        font-weight: 900;
+                        flex-basis: 10px; 
+                        background-color: #7E84C6;
+                    }
+                    .cell-2 { 
+                        text-align: left;
+                        flex-basis: 100%; 
+                    }
+                    .cell-3 { 
+                        flex-basis: 35px; 
+                        background-color: #D298C0;
+                    }
+                    .cell-4 { 
+                        flex-basis: 35px; 
+                    }
+                    .cell-5 { 
+                        flex-basis: 35px; 
+                        background-color: #7E84C6;
+                    }
+                </style>
+                <title>FFSGCLEFT</title>
+                <script src="./FFSGC_files/jquery.min.js.下載"></script>
+                <script>
+                    $(document).ready(function() {
+                        // 定義試算表的ID和工作表名稱
+                        const spreadsheetId = "1COOG-OTMPIqRJNHjFsc4EBsOfA0Oc6bKQC6YLTErc-4";
+                        const sheetName = "HTML";
+                        const apiKey = "AIzaSyD54Io6lReYzhUfjeh4y60wQZh4Z-yh93c";
+            
+                        function fetchData() {
+                            $.ajax({
+                                url: `https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}/values/${sheetName}?key=${apiKey}`,
+                                type: 'GET',
+                                success: function(response) {
+                                    // 處理成功回應
+                                    const values = response.values;
+            
+                                    // 處理資料並顯示在網頁上
+                                    if (values && values.length > 0) {
+                                       // 填入資料
+                                    $('#team1').text(values[0][0]);
+                                    $('#team2').text(values[1][0]);
+                                    $('#team3').text(values[2][0]);
+                                    $('#team4').text(values[3][0]);
+                                    $('#team5').text(values[4][0]);
+                                    $('#team6').text(values[5][0]);
+                                    $('#team7').text(values[6][0]);
+                                    $('#team8').text(values[7][0]);
+                                    $('#team9').text(values[8][0]);
+                                    $('#team10').text(values[9][0]);
+                                    $('#team11').text(values[10][0]);
+                                    $('#team12').text(values[11][0]);
+            
+                                    $('#MAP01').text(values[0][1]);
+                                    $('#MAP02').text(values[1][1]);
+                                    $('#MAP03').text(values[2][1]);
+                                    $('#MAP04').text(values[3][1]);
+                                    $('#MAP05').text(values[4][1]);
+                                    $('#MAP06').text(values[5][1]);
+                                    $('#MAP07').text(values[6][1]);
+                                    $('#MAP08').text(values[7][1]);
+                                    $('#MAP09').text(values[8][1]);
+                                    $('#MAP10').text(values[9][1]);
+                                    $('#MAP11').text(values[10][1]);
+                                    $('#MAP12').text(values[11][1]);
+            
+                                    $('#booyah1').text(values[0][2]);
+                                    $('#booyah2').text(values[1][2]);
+                                    $('#booyah3').text(values[2][2]);
+                                    $('#booyah4').text(values[3][2]);
+                                    $('#booyah5').text(values[4][2]);
+                                    $('#booyah6').text(values[5][2]);
+                                    $('#booyah7').text(values[6][2]);
+                                    $('#booyah8').text(values[7][2]);
+                                    $('#booyah9').text(values[8][2]);
+                                    $('#booyah10').text(values[9][2]);
+                                    $('#booyah11').text(values[10][2]);
+                                    $('#booyah12').text(values[11][2]);
+            
+                                    $('#kills1').text(values[0][3]);
+                                    $('#kills2').text(values[1][3]);
+                                    $('#kills3').text(values[2][3]);
+                                    $('#kills4').text(values[3][3]);
+                                    $('#kills5').text(values[4][3]);
+                                    $('#kills6').text(values[5][3]);
+                                    $('#kills7').text(values[6][3]);
+                                    $('#kills8').text(values[7][3]);
+                                    $('#kills9').text(values[8][3]);
+                                    $('#kills10').text(values[9][3]);
+                                    $('#kills11').text(values[10][3]);
+                                    $('#kills12').text(values[11][3]);
+            
+                                    
+            
+                                    $('#points01').text(values[0][4]);
+                                    $('#points02').text(values[1][4]);
+                                    $('#points03').text(values[2][4]);
+                                    $('#points04').text(values[3][4]);
+                                    $('#points05').text(values[4][4]);
+                                    $('#points06').text(values[5][4]);
+                                    $('#points07').text(values[6][4]);
+                                    $('#points08').text(values[7][4]);
+                                    $('#points09').text(values[8][4]);
+                                    $('#points10').text(values[9][4]);
+                                    $('#points11').text(values[10][4]);
+                                    $('#points12').text(values[11][4]);
+                                    }
+                                },
+                                error: function(error) {
+                                    // 處理錯誤
+                                    console.log(error);
+                                }
+                            });
+                        }
+            
+                        // 首次加載資料
+                        fetchData();
+            
+                        // 設定定時器每15秒更新一次資料
+                        setInterval(fetchData, 15000);
+                    });
+                </script>
+            </head>
+            <body>
+                <div class="column">
+                    <div class="row">
+                        <div class="cell cell-1">2</div>
+                        <div class="cell cell-2" id="team2">GRADE2</div>
+                        <div class="cell cell-3" id="MAP02">0</div>
+                        <div class="cell cell-4" id="booyah2">0</div>
+                        <div class="cell cell-4" id="kills2">0</div>
+                        <div class="cell cell-5" id="points02">0</div>
+                    </div>
+                    <div class="row">
+                        <div class="cell cell-1">3</div>
+                        <div class="cell cell-2" id="team3">GRADE3</div>
+                        <div class="cell cell-3" id="MAP03">0</div>
+                        <div class="cell cell-4" id="booyah3">0</div>
+                        <div class="cell cell-4" id="kills3">0</div>
+                        <div class="cell cell-5" id="points03">0</div>
+                    </div>
+                </div>
+            </body>
+            </html> 
+        </div>
+    </div>
+
+    <!-- 第三部分內容 -->
+    <div id="score-right" class="section draggable">
+        <!-- 複製 "FFSGCRIGHT.html" 的內容到此 -->
+        <div>
+            <!DOCTYPE html>
+            <!-- saved from url=(0039)https://jl-4lw.pages.dev/Regular_season -->
+            <html lang="zh-Hant"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+                <link rel="stylesheet" href="https://enengame.github.io/BNT/png/font.css">
+                
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <style>
+                    body {
+                        margin: 0;
+                        padding: 0;
+                        font-family: "GFF Latin", "Noto Sans TC";
+                        background-size: cover;
+                        height: 100%;
+                        width: 100%;
+                        display: flex;
+                    }
+                    .column {
+                        margin-right: 50px;
+                        flex: 1;
+                        display: flex;
+                        flex-direction: column;
+                    }
+                    .row {
+                        display: flex;
+                        margin-bottom: 15px;
+                    }
+                    .cell {
+                        font-size: 35px;
+                        color: #ffffff;
+                        background-color: #C09AD9;
+                        border: 1px solid #959595;
+                        padding: 10px 8px 10px 8px;
+                        text-align: center;
+                    }
+                    .cell-1 { 
+                        font-size: 35px;
+                        font-weight: 900;
+                        flex-basis: 10px; 
+                        background-color: #7E84C6;
+                    }
+                    .cell-2 { 
+                        text-align: left;
+                        flex-basis: 100%; 
+                    }
+                    .cell-3 { 
+                        flex-basis: 35px; 
+                        background-color: #D298C0;
+                    }
+                    .cell-4 { 
+                        flex-basis: 35px; 
+                    }
+                    .cell-5 { 
+                        flex-basis: 35px; 
+                        background-color: #7E84C6;
+                    }
+                </style>
+                <title>FFSGCRIGHT</title>
+                <script src="./FFSGC_files/jquery.min.js.下載"></script>
+                <script>
+                    $(document).ready(function() {
+                        // 定義試算表的ID和工作表名稱
+                        const spreadsheetId = "1COOG-OTMPIqRJNHjFsc4EBsOfA0Oc6bKQC6YLTErc-4";
+                        const sheetName = "HTML";
+                        const apiKey = "AIzaSyA8Hsr_UTm3eyHC43-ZadQp-6J8eJBIIlk";
+            
+                        function fetchData() {
+                            $.ajax({
+                                url: `https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}/values/${sheetName}?key=${apiKey}`,
+                                type: 'GET',
+                                success: function(response) {
+                                    // 處理成功回應
+                                    const values = response.values;
+            
+                                    // 處理資料並顯示在網頁上
+                                    if (values && values.length > 0) {
+                                       // 填入資料
+                                    $('#team1').text(values[0][0]);
+                                    $('#team2').text(values[1][0]);
+                                    $('#team3').text(values[2][0]);
+                                    $('#team4').text(values[3][0]);
+                                    $('#team5').text(values[4][0]);
+                                    $('#team6').text(values[5][0]);
+                                    $('#team7').text(values[6][0]);
+                                    $('#team8').text(values[7][0]);
+                                    $('#team9').text(values[8][0]);
+                                    $('#team10').text(values[9][0]);
+                                    $('#team11').text(values[10][0]);
+                                    $('#team12').text(values[11][0]);
+            
+                                    $('#MAP01').text(values[0][1]);
+                                    $('#MAP02').text(values[1][1]);
+                                    $('#MAP03').text(values[2][1]);
+                                    $('#MAP04').text(values[3][1]);
+                                    $('#MAP05').text(values[4][1]);
+                                    $('#MAP06').text(values[5][1]);
+                                    $('#MAP07').text(values[6][1]);
+                                    $('#MAP08').text(values[7][1]);
+                                    $('#MAP09').text(values[8][1]);
+                                    $('#MAP10').text(values[9][1]);
+                                    $('#MAP11').text(values[10][1]);
+                                    $('#MAP12').text(values[11][1]);
+            
+                                    $('#booyah1').text(values[0][2]);
+                                    $('#booyah2').text(values[1][2]);
+                                    $('#booyah3').text(values[2][2]);
+                                    $('#booyah4').text(values[3][2]);
+                                    $('#booyah5').text(values[4][2]);
+                                    $('#booyah6').text(values[5][2]);
+                                    $('#booyah7').text(values[6][2]);
+                                    $('#booyah8').text(values[7][2]);
+                                    $('#booyah9').text(values[8][2]);
+                                    $('#booyah10').text(values[9][2]);
+                                    $('#booyah11').text(values[10][2]);
+                                    $('#booyah12').text(values[11][2]);
+            
+                                    $('#kills1').text(values[0][3]);
+                                    $('#kills2').text(values[1][3]);
+                                    $('#kills3').text(values[2][3]);
+                                    $('#kills4').text(values[3][3]);
+                                    $('#kills5').text(values[4][3]);
+                                    $('#kills6').text(values[5][3]);
+                                    $('#kills7').text(values[6][3]);
+                                    $('#kills8').text(values[7][3]);
+                                    $('#kills9').text(values[8][3]);
+                                    $('#kills10').text(values[9][3]);
+                                    $('#kills11').text(values[10][3]);
+                                    $('#kills12').text(values[11][3]);
+            
+                                    
+            
+                                    $('#points01').text(values[0][4]);
+                                    $('#points02').text(values[1][4]);
+                                    $('#points03').text(values[2][4]);
+                                    $('#points04').text(values[3][4]);
+                                    $('#points05').text(values[4][4]);
+                                    $('#points06').text(values[5][4]);
+                                    $('#points07').text(values[6][4]);
+                                    $('#points08').text(values[7][4]);
+                                    $('#points09').text(values[8][4]);
+                                    $('#points10').text(values[9][4]);
+                                    $('#points11').text(values[10][4]);
+                                    $('#points12').text(values[11][4]);
+                                    }
+                                },
+                                error: function(error) {
+                                    // 處理錯誤
+                                    console.log(error);
+                                }
+                            });
+                        }
+            
+                        // 首次加載資料
+                        fetchData();
+            
+                        // 設定定時器每15秒更新一次資料
+                        setInterval(fetchData, 15000);
+                    });
+                </script>
+            </head>
+            <body>
+                <div class="column">
+                    <div class="row">
+                        <div class="cell cell-1">4</div>
+                        <div class="cell cell-2" id="team4">GRADE4</div>
+                        <div class="cell cell-3" id="MAP04">0</div>
+                        <div class="cell cell-4" id="booyah4">0</div>
+                        <div class="cell cell-4" id="kills4">0</div>
+                        <div class="cell cell-5" id="points04">0</div>
+                    </div>
+                    <div class="row">
+                        <div class="cell cell-1">5</div>
+                        <div class="cell cell-2" id="team5">GRADE5</div>
+                        <div class="cell cell-3" id="MAP05">0</div>
+                        <div class="cell cell-4" id="booyah5">0</div>
+                        <div class="cell cell-4" id="kills5">0</div>
+                        <div class="cell cell-5" id="points05">0</div>
+                    </div>
+                    <div class="row">
+                        <div class="cell cell-1">6</div>
+                        <div class="cell cell-2" id="team6">GRADE6</div>
+                        <div class="cell cell-3" id="MAP06">0</div>
+                        <div class="cell cell-4" id="booyah6">0</div>
+                        <div class="cell cell-4" id="kills6">0</div>
+                        <div class="cell cell-5" id="points06">0</div>
+                    </div>
+                    <div class="row">
+                        <div class="cell cell-1">7</div>
+                        <div class="cell cell-2" id="team7">GRADE7</div>
+                        <div class="cell cell-3" id="MAP07">0</div>
+                        <div class="cell cell-4" id="booyah7">0</div>
+                        <div class="cell cell-4" id="kills7">0</div>
+                        <div class="cell cell-5" id="points07">0</div>
+                    </div>
+                    <div class="row">
+                        <div class="cell cell-1">8</div>
+                        <div class="cell cell-2" id="team8">GRADE8</div>
+                        <div class="cell cell-3" id="MAP08">0</div>
+                        <div class="cell cell-4" id="booyah8">0</div>
+                        <div class="cell cell-4" id="kills8">0</div>
+                        <div class="cell cell-5" id="points08">0</div>
+                    </div>
+                    <div class="row">
+                        <div class="cell cell-1">9</div>
+                        <div class="cell cell-2" id="team9">GRADE9</div>
+                        <div class="cell cell-3" id="MAP09">0</div>
+                        <div class="cell cell-4" id="booyah9">0</div>
+                        <div class="cell cell-4" id="kills9">0</div>
+                        <div class="cell cell-5" id="points09">0</div>
+                    </div>
+                    <div class="row">
+                        <div class="cell cell-1" style="padding: 10px 3px 10px 3px;">10</div>
+                        <div class="cell cell-2" id="team10">GRADE10</div>
+                        <div class="cell cell-3" id="MAP10">0</div>
+                        <div class="cell cell-4" id="booyah10">0</div>
+                        <div class="cell cell-4" id="kills10">0</div>
+                        <div class="cell cell-5" id="points10">0</div>
+                    </div>
+                    <div class="row">
+                        <div class="cell cell-1" style="padding: 10px 6px 10px 6px;">11</div>
+                        <div class="cell cell-2" id="team11">GRADE11</div>
+                        <div class="cell cell-3" id="MAP11">0</div>
+                        <div class="cell cell-4" id="booyah11">0</div>
+                        <div class="cell cell-4" id="kills11">0</div>
+                        <div class="cell cell-5" id="points11">0</div>
+                    </div>
+                    <div class="row">
+                        <div class="cell cell-1" style="padding: 10px 5px 10px 5px;">12</div>
+                        <div class="cell cell-2" id="team12">GRADE12</div>
+                        <div class="cell cell-3" id="MAP12">0</div>
+                        <div class="cell cell-4" id="booyah12">0</div>
+                        <div class="cell cell-4" id="kills12">0</div>
+                        <div class="cell cell-5" id="points12">0</div>
+                    </div>
+                </div>
+            
+            
+            </body></html>
+
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            const spreadsheetId = "1COOG-OTMPIqRJNHjFsc4EBsOfA0Oc6bKQC6YLTErc-4";
+            const sheetName = "OBSRANK";
+            const apiKey = "AIzaSyDCpZh3hJxy5VEDXBTqkSkauHuR99CXIvk";
+    
+            function fetchData() {
+                $.ajax({
+                    url: `https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetId}/values/${sheetName}?key=${apiKey}`,
+                    type: 'GET',
+                    success: function(response) {
+                        const values = response.values;
+    
+                        if (values && values.length > 0) {
+                            // 填入 5 組文字內容
+                            $('#text1').text(values[1][7]);
+                            $('#text2').text(values[1][6]);
+                            $('#text3').text(values[1][3]);
+                            $('#text4').text(values[1][4]);
+                            $('#text5').text(values[1][5]);
+                        }
+                    },
+                    error: function(error) {
+                        console.log(error);
+                    }
+                });
+            }
+            // 首次加載資料
+            fetchData();
+            reloadIframes();
+    
+            // 設定定時器每 30 秒重新整理資料和 iframe
+            setInterval(() => {
+                fetchData();
+                reloadIframes();
+            }, 30000);
+        });
+    </script>
+    
+</body>
+</html>
